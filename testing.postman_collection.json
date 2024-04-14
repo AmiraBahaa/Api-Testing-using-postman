@@ -1,0 +1,1767 @@
+{
+	"info": {
+		"_postman_id": "aae9d9fb-1ff8-4a61-86e2-40b60d0c46f9",
+		"name": "testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28553152",
+		"_collection_link": "https://blue-escape-237708.postman.co/workspace/tests~ad11eefa-fb96-4138-bf63-0880b3fbe867/collection/28553152-aae9d9fb-1ff8-4a61-86e2-40b60d0c46f9?action=share&source=collection_link&creator=28553152"
+	},
+	"item": [
+		{
+			"name": "Emergency",
+			"item": [
+				{
+					"name": "get Patient relatives",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 400ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body contains expected data\", function () {\r",
+									"  var jsonData = pm.response.json();});\r",
+									"\r",
+									"pm.test(\"Response headers are correct\", function () {\r",
+									"  pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+									"});\r",
+									"pm.test(\"Response body contains expected data\", function () {\r",
+									"  var jsonData = pm.response.json();\r",
+									"\r",
+									"  pm.expect(jsonData.relativeName).to.equal(\"Ahmed\");\r",
+									"  pm.expect(jsonData.relationType).to.equal(\"brother\");\r",
+									"  pm.expect(jsonData.relativeEmail).to.equal(\"ahmed@gmail.com\");\r",
+									"  pm.expect(jsonData.relativePhone).to.equal(\"01457855555\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWlyYWJhaGFhMjciLCJpYXQiOjE2ODk2ODgxMzMsImV4cCI6MTY4OTc3NDUzM30.9ONRcF6WIWh9oNrf2-e-_U8HTRk8LaKkryTaOml-TlhUXgMMiLwRF8Vn_eJSX00n1s1T6P78-zbbj_hxgbtzCg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/emergency/relatives/gamalbadawy88",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"emergency",
+								"relatives",
+								"gamalbadawy88"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contact us",
+			"item": [
+				{
+					"name": "all contacts requests",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);\r",
+									"    });\r",
+									"\r",
+									"pm.test(\"Response body contains expected data\", function () { \r",
+									"  var jsonData = pm.response.json(); });\r",
+									"\r",
+									"pm.test(\"Response headers are correct\", function () {\r",
+									"  pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+									"  pm.response.to.have.header(\"Cache-Control\", \"no-cache, no-store, max-age=0, must-revalidate\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWlyYWFsaTg4IiwiaWF0IjoxNjg5Mjc5NjE1LCJleHAiOjE2ODkzNjYwMTV9.uXE1LqPEOE6HymxLn7C02JPbGX8vLy2G-5kEBQY8UB4Ut1kDjBBXKdCUzmZY8Zae_wxAMCgTaIwx1CjYf9hDpg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/contacts/all-contact-requests-page",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"contacts",
+								"all-contact-requests-page"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "save contact",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201,202]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"pm.test(\"Response body contains expected data\", function () {\r",
+									"  var jsonData = pm.response.json();});\r",
+									"\r",
+									"pm.test(\"Response headers are correct\", function () {\r",
+									"  pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+									"  pm.response.to.have.header(\"Cache-Control\", \"no-cache, no-store, max-age=0, must-revalidate\");\r",
+									"});\r",
+									"pm.test(\"Response body contains expected data\", function () {\r",
+									"  var jsonData = pm.response.json();\r",
+									"\r",
+									"  pm.expect(jsonData.name).to.equal(\"Amira Bahaa\");\r",
+									"  pm.expect(jsonData.email).to.equal(\"amira27@yahoo.com\");\r",
+									"  pm.expect(jsonData.message).to.equal(\"I want a recheck in my last scan report\");\r",
+									"  pm.expect(jsonData.phone).to.equal(\"01117585954\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJnYW1hbGJhZGF3eTg4IiwiaWF0IjoxNjg5NjkyMzU2LCJleHAiOjE2ODk3Nzg3NTZ9.yQiEUxEEPvO6OaVS2iN5gm9KlTRh5eLkN1mI6HJYgRD0BoKLfUsOFLtIayJHCiOEgGuGbB1AKAdQD1NvU4_fcA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"name\":\"Amira Bahaa\" ,\r\n        \"email\": \"amira27@yahoo.com\",\r\n        \"message\": \"I want a recheck in my last scan report\",\r\n        \"phone\": \"01117585954\"\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/contacts/contact-us",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contacts",
+								"contact-us"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "patients",
+			"item": [
+				{
+					"name": "show-patient-info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Content-Type is present\", function () { \r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\"); \r",
+									"}); \r",
+									"pm.test(\"Status code is 200\", function () { \r",
+									"    pm.response.to.have.status(200); \r",
+									"}); \r",
+									"pm.test(\"Response body has correct patient name\", function () { \r",
+									"    var jsonData = pm.response.json(); \r",
+									"    pm.expect(jsonData.patientName).to.eql(\"gamal omar\"); \r",
+									"}); \r",
+									" \r",
+									"pm.test(\"Response body has correct blood pressure status\", function () { \r",
+									"    var jsonData = pm.response.json(); \r",
+									"    pm.expect(jsonData.bloodPressure).to.eql(true); \r",
+									"}); \r",
+									" \r",
+									"pm.test(\"Response body has correct blood type\", function () { \r",
+									"    var jsonData = pm.response.json(); \r",
+									"    pm.expect(jsonData.bloodType).to.eql(\"A+\"); \r",
+									"}); \r",
+									" \r",
+									"pm.test(\"Response body has correct heart disease status\", function () { \r",
+									"    var jsonData = pm.response.json(); \r",
+									"    pm.expect(jsonData.heartDisease).to.eql(false); \r",
+									"}); \r",
+									" \r",
+									"pm.test(\"Response body has correct treatment status\", function () { \r",
+									"    var jsonData = pm.response.json(); \r",
+									"    pm.expect(jsonData.treatment).to.eql(true); \r",
+									"}); \r",
+									" \r",
+									"pm.test(\"Response body has correct tumor status\", function () { \r",
+									"    var jsonData = pm.response.json(); \r",
+									"    pm.expect(jsonData.tumors).to.eql(true); \r",
+									"}); \r",
+									" \r",
+									"pm.test(\"Response body has correct age\", function () { \r",
+									"    var jsonData = pm.response.json(); \r",
+									"    pm.expect(jsonData.age).to.eql(22); \r",
+									"}); \r",
+									" \r",
+									"pm.test(\"Response body has correct alcohol status\", function () { \r",
+									"    var jsonData = pm.response.json(); \r",
+									"    pm.expect(jsonData.alcohol).to.eql(false); \r",
+									"}); \r",
+									" \r",
+									"pm.test(\"Response body has correct diabetes status\", function () { \r",
+									"    var jsonData = pm.response.json(); \r",
+									"    pm.expect(jsonData.diabetes).to.eql(true); \r",
+									"}); \r",
+									"\r",
+									"pm.test(\"Response body contains expected data\", function () { \r",
+									"  var jsonData = pm.response.json(); });\r",
+									"  \r",
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);\r",
+									"    });\r",
+									"\r",
+									"    \r",
+									"pm.test(\"Response headers are correct\", function () {\r",
+									"  pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+									"  pm.response.to.have.header(\"Cache-Control\", \"no-cache, no-store, max-age=0, must-revalidate\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJnYW1hbGJhZGF3eTg4IiwiaWF0IjoxNjg5NjkyMzU2LCJleHAiOjE2ODk3Nzg3NTZ9.yQiEUxEEPvO6OaVS2iN5gm9KlTRh5eLkN1mI6HJYgRD0BoKLfUsOFLtIayJHCiOEgGuGbB1AKAdQD1NvU4_fcA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/patients/gamalbadawy88",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patients",
+								"gamalbadawy88"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Basic Information",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									" pm.test(\"Content-Type is present\", function () { pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\"); }); \r",
+									"\r",
+									"  pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); }); \r",
+									"pm.test(\"Response headers are correct\", function () {\r",
+									"  pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+									"  pm.response.to.have.header(\"Cache-Control\", \"no-cache, no-store, max-age=0, must-revalidate\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response contains basic patient information\", function () { \r",
+									"    var jsonData = pm.response.json(); \r",
+									"    pm.expect(jsonData).to.have.property(\"bloodPressure\", true); \r",
+									"    pm.expect(jsonData).to.have.property(\"bloodType\", \"A+\"); \r",
+									"    pm.expect(jsonData).to.have.property(\"heartDisease\", false); \r",
+									"    pm.expect(jsonData).to.have.property(\"treatment\", false); \r",
+									"    pm.expect(jsonData).to.have.property(\"tumors\", false); \r",
+									"    pm.expect(jsonData).to.have.property(\"patientName\", \"amira Amr\"); \r",
+									"    pm.expect(jsonData).to.have.property(\"age\", 22); \r",
+									"    pm.expect(jsonData).to.have.property(\"alcohol\", false); \r",
+									"    pm.expect(jsonData).to.have.property(\"diabetes\", false); \r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJnYW1hbGJhZGF3eTg4IiwiaWF0IjoxNjg5NjkyMzU2LCJleHAiOjE2ODk3Nzg3NTZ9.yQiEUxEEPvO6OaVS2iN5gm9KlTRh5eLkN1mI6HJYgRD0BoKLfUsOFLtIayJHCiOEgGuGbB1AKAdQD1NvU4_fcA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/patients/gamalbadawy88",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patients",
+								"gamalbadawy88"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "current medicines",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);\r",
+									"    });\r",
+									"\r",
+									"pm.test(\"Response body contains expected data\", function () { \r",
+									"  var jsonData = pm.response.json(); });\r",
+									"\r",
+									"pm.test(\"Response headers are correct\", function () {\r",
+									"  pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+									"  pm.response.to.have.header(\"Cache-Control\", \"no-cache, no-store, max-age=0, must-revalidate\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJnYW1hbGJhZGF3eTg4IiwiaWF0IjoxNjg5Njg3NjgyLCJleHAiOjE2ODk3NzQwODJ9.FWW3VUlIZU0sinKWLdnxGtSSzUFBaNwQyZq3RE2xWKWBRdq3nBu73oIkVxEXJ_mEJckODtrgTVV4moXOGXZ1zw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/patients/current-medicine/gamalbadawy88",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patients",
+								"current-medicine",
+								"gamalbadawy88"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "prescription",
+			"item": [
+				{
+					"name": "add prescription",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201,202]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWlyYWJhaGFhMjciLCJpYXQiOjE2ODk2OTM1OTEsImV4cCI6MTY4OTc3OTk5MX0._ahB_HNKSmfjl-nvVgsHH_984CC5qczHtguG4qEE6Fzxc8eUQy3oB_XlySYfLUwRggX3hUWSzVZ7MfRBHE57HQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"date\":\"2023-07-12\",\r\n\r\n    \"specialization\":\"bones and nerves\",\r\n\r\n    \"diagnosisName\":\"diziiness\",\r\n\r\n    \"notes\":\"take a rest for 4 weeks\",\r\n\r\n    \"medicineDtoList\":[  { \"medicineName\": \"derma\",\"medicineDoses\": 4,  \"period\":10, \"startDate\": \"2023-07-12\"\r\n                        }\r\n                     ],\r\n\r\n    \"testName\":[ {\r\n                     \"testName\": \"CRP\"\r\n                 }  ,{\r\n                     \"testName\": \"CBC\"\r\n                 } ],\r\n\r\n    \"scanName\":[\r\n        {   \"scanName\": \"Leg nerves\" }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/prescriptions/add-new-prescription/gamalbadawy88/amirabahaa27",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"prescriptions",
+								"add-new-prescription",
+								"gamalbadawy88",
+								"amirabahaa27"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show-prescription-by-username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);\r",
+									"    });\r",
+									"\r",
+									"pm.test(\"Response body contains expected data\", function () { \r",
+									"  var jsonData = pm.response.json(); });\r",
+									"\r",
+									"pm.test(\"Response headers are correct\", function () {\r",
+									"  pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+									"  pm.response.to.have.header(\"Cache-Control\", \"no-cache, no-store, max-age=0, must-revalidate\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJnYW1hbGJhZGF3eTg4IiwiaWF0IjoxNjg5NjEzODMzLCJleHAiOjE2ODk3MDAyMzN9.IZoFtnLioyGabG_nOZcqyUzYoZ6VuGQdL2xGseCuItvWVAn23N9137Msnbtk1ogqaEOB0DJP6sS7cmVH6iQWRQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/prescriptions/gamalbadawy88",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"prescriptions",
+								"gamalbadawy88"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get required medicines",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 400ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWlyYTI3IiwiaWF0IjoxNjg5Njg3Mjk4LCJleHAiOjE2ODk3NzM2OTh9.NGyfuyD53bzvXzWn1tSfA8C74S9Ymz1xcmtUwFJ4q_l4xMJU3PV5dKIbW45IXumEm8Y5Rb84nqUh_Czl6XvatQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pharmacist/gamalbadawy88",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pharmacist",
+								"gamalbadawy88"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Doctors info",
+			"item": [
+				{
+					"name": "get labTech info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response body has correct doctor name\", function () { \r",
+									"    var jsonData = pm.response.json(); \r",
+									"    pm.expect(jsonData.doctorName).to.eql(\"medhat salam mahmoud\"); \r",
+									"}); \r",
+									" \r",
+									"pm.test(\"Response body has correct date of birth\", function () { \r",
+									"    var jsonData = pm.response.json(); \r",
+									"    pm.expect(jsonData.dateOfBirth).to.eql(\"1980-09-18\"); \r",
+									"}); \r",
+									" \r",
+									"pm.test(\"Response body has correct age\", function () { \r",
+									"    var jsonData = pm.response.json(); \r",
+									"    pm.expect(jsonData.age).to.eql(42); \r",
+									"}); \r",
+									" \r",
+									"pm.test(\"Response body has correct email\", function () { \r",
+									"    var jsonData = pm.response.json(); \r",
+									"    pm.expect(jsonData.email).to.eql(\"mariam@gmail.com\"); \r",
+									"}); \r",
+									" \r",
+									"pm.test(\"Response body has correct phone number\", function () { \r",
+									"    var jsonData = pm.response.json(); \r",
+									"    pm.expect(jsonData.phone).to.eql(\"01154689578\"); \r",
+									"}); \r",
+									" \r",
+									"pm.test(\"Response body has correct city\", function () { \r",
+									"    var jsonData = pm.response.json(); \r",
+									"    pm.expect(jsonData.city).to.eql(\"Beni_suief\"); \r",
+									"}); \r",
+									" \r",
+									"pm.test(\"Response body has correct street\", function () { \r",
+									"    var jsonData = pm.response.json(); \r",
+									"    pm.expect(jsonData.street).to.eql(\"19\"); \r",
+									"}); \r",
+									" \r",
+									"pm.test(\"Response body has correct apartment number\", function () { \r",
+									"    var jsonData = pm.response.json(); \r",
+									"    pm.expect(jsonData.apartmentNo).to.eql(18); \r",
+									"}); \r",
+									" \r",
+									"pm.test(\"Response body has correct place name\", function () { \r",
+									"    var jsonData = pm.response.json(); \r",
+									"    pm.expect(jsonData.placeName).to.eql([\"Alpha scan\"]); \r",
+									"}); \r",
+									" \r",
+									"pm.test(\"Response body has correct cityW\", function () { \r",
+									"    var jsonData = pm.response.json(); \r",
+									"    pm.expect(jsonData.cityW).to.eql([\"mokattam\"]); \r",
+									"}); \r",
+									" \r",
+									"pm.test(\"Response body has correct streetW\", function () { \r",
+									"    var jsonData = pm.response.json(); \r",
+									"    pm.expect(jsonData.streetW).to.eql([\"9th street\"]); \r",
+									"}); \r",
+									" \r",
+									"pm.test(\"Response body has correct apartmentNoW\", function () { \r",
+									"    var jsonData = pm.response.json(); \r",
+									"    pm.expect(jsonData.apartmentNoW).to.eql([\"2650\"]); \r",
+									"}); \r",
+									" \r",
+									"// Check Content-Type header \r",
+									"pm.test(\"Content-Type is present\", function () { \r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\"); \r",
+									"}); \r",
+									"// Check response status code \r",
+									"pm.test(\"Status code is 200\", function () { \r",
+									"    pm.response.to.have.status(200); \r",
+									"}); \r",
+									" \r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"    \r",
+									"pm.test(\"Response headers are correct\", function () {\r",
+									"  pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+									"  pm.response.to.have.header(\"Cache-Control\", \"no-cache, no-store, max-age=0, must-revalidate\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZWRoYXQ4OCIsImlhdCI6MTY4OTY5MjgyOSwiZXhwIjoxNjg5Nzc5MjI5fQ.VIsEnSMrm6CklWZmXAlrQKEn7kaWSmB6mGAvWnoT6QCPULHHRcx2DEV_kyYmm_kPD-H1y23frDpKsPDLtChAXQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lab/tech-profile/medhat88",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lab",
+								"tech-profile",
+								"medhat88"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "specialist doctor info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Check Content-Type header \r",
+									"pm.test(\"Content-Type is present\", function () { \r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\"); \r",
+									"}); \r",
+									"// Check response status code \r",
+									"pm.test(\"Status code is 200\", function () { \r",
+									"    pm.response.to.have.status(200); \r",
+									"}); \r",
+									" \r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"    \r",
+									"pm.test(\"Response headers are correct\", function () {\r",
+									"  pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+									"  pm.response.to.have.header(\"Cache-Control\", \"no-cache, no-store, max-age=0, must-revalidate\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWlyYWJhaGFhMjciLCJpYXQiOjE2ODk2OTM1OTEsImV4cCI6MTY4OTc3OTk5MX0._ahB_HNKSmfjl-nvVgsHH_984CC5qczHtguG4qEE6Fzxc8eUQy3oB_XlySYfLUwRggX3hUWSzVZ7MfRBHE57HQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/doctor/amirabahaa27",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doctor",
+								"amirabahaa27"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get pharmacist profile info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"pm.test(\"Response body has correct doctor name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.doctorName).to.eql(\"amira bahaa abdelmoniem\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body has correct date of birth\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.dateOfBirth).to.eql(\"2000-07-02\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body has correct age\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.age).to.eql(23);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body has correct email\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.email).to.eql(\"amirabahaa195@gmail.com\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body has correct phone number\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.phone).to.eql(\"01117598654\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body has correct city\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.city).to.eql(\"Cairo\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body has correct street\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.street).to.eql(\"Mokattam\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body has correct apartment number\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.apartmentNo).to.eql(9);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body has correct place name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.placeName[0]).to.eql(\"AlHaram Hospital\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body has correct city work address\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.cityW[0]).to.eql(\"Giza\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body has correct street work address\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.streetW[0]).to.eql(\"Alharam street\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body has correct apartment number work address\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.apartmentNoW[0]).to.eql(\"4\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body contains expected data\", function () { \r",
+									"  var jsonData = pm.response.json(); });\r",
+									"  \r",
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);\r",
+									"    });\r",
+									"\r",
+									"    \r",
+									"pm.test(\"Response headers are correct\", function () {\r",
+									"  pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+									"  pm.response.to.have.header(\"Cache-Control\", \"no-cache, no-store, max-age=0, must-revalidate\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWlyYTI3IiwiaWF0IjoxNjg5Njk0MTYyLCJleHAiOjE2ODk3ODA1NjJ9.9dHZ0H2ON0ZtObt_VW-m44oX_irRHZokfUA-7h9yjsaDoEsbCuFEXaYs8hMOZeAnEnjfMzEMPs-MvDOzz58qYw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pharmacist/pharmacist-profile/amira27",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pharmacist",
+								"pharmacist-profile",
+								"amira27"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "lost card requests",
+			"item": [
+				{
+					"name": "get all lost card requests (logged in as admin)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Check Content-Type header \r",
+									"pm.test(\"Content-Type is present\", function () { \r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\"); \r",
+									"}); \r",
+									"// Check response status code \r",
+									"pm.test(\"Status code is 200\", function () { \r",
+									"    pm.response.to.have.status(200); \r",
+									"}); \r",
+									" \r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"    \r",
+									"pm.test(\"Response headers are correct\", function () {\r",
+									"  pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+									"  pm.response.to.have.header(\"Cache-Control\", \"no-cache, no-store, max-age=0, must-revalidate\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWlyYTI3IiwiaWF0IjoxNjg5MjcwOTExLCJleHAiOjE2ODkzNTczMTF9.i3sRyX7SO4h7mBQfM7wJkLQJbbO196N5E9IX5oyt0Nl5XJEEHQTcSHnEfgP_FQ-dp6zDhLdUYD77IBx-j-4aTQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/losts/all-lost-card-requests-page",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"losts",
+								"all-lost-card-requests-page"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lost card request (logged in as patient)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201,202]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"pm.test(\"Response body contains expected data\", function () {\r",
+									"  var jsonData = pm.response.json();});\r",
+									"\r",
+									"pm.test(\"Response headers are correct\", function () {\r",
+									"  pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+									"  pm.response.to.have.header(\"Cache-Control\", \"no-cache, no-store, max-age=0, must-revalidate\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body matches expected values\", function () {\r",
+									"    var responseBody = pm.response.json();\r",
+									"\r",
+									"    pm.expect(responseBody.name).to.eql(\"saber maghawry hassan sobhy\");\r",
+									"    pm.expect(responseBody.email).to.eql(\"saberEldemaghory@gmail.com\");\r",
+									"    pm.expect(responseBody.lossDetails).to.eql(\"stolen with my wallet\");\r",
+									"    pm.expect(responseBody.phone).to.eql(\"01127583673\");\r",
+									"    pm.expect(responseBody.requestId).to.be.a('number');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJnYW1hbGJhZGF3eTg4IiwiaWF0IjoxNjg5NjkyMzU2LCJleHAiOjE2ODk3Nzg3NTZ9.yQiEUxEEPvO6OaVS2iN5gm9KlTRh5eLkN1mI6HJYgRD0BoKLfUsOFLtIayJHCiOEgGuGbB1AKAdQD1NvU4_fcA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"email\":\"saberEldemaghory@gmail.com\",\r\n    \"lossDetails\":\"stolen with my wallet\"  ,\r\n    \"name\":\"saber maghawry hassan sobhy\",  \r\n    \"phone\":\"01127583673\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/losts/lost-card-patient-view",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"losts",
+								"lost-card-patient-view"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "upload and download",
+			"item": [
+				{
+					"name": "images",
+					"item": [
+						{
+							"name": "imageUpload",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () { \r",
+											"    pm.response.to.have.status(200); \r",
+											"}); \r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {\r",
+											"    console.log(response.json());\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJnYW1hbGJhZGF3eTg4IiwiaWF0IjoxNjg5NjkyMzU2LCJleHAiOjE2ODk3Nzg3NTZ9.yQiEUxEEPvO6OaVS2iN5gm9KlTRh5eLkN1mI6HJYgRD0BoKLfUsOFLtIayJHCiOEgGuGbB1AKAdQD1NvU4_fcA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/Admin/Pictures/gamal.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/user/image/upload/gamalbadawy88",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user",
+										"image",
+										"upload",
+										"gamalbadawy88"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Image Retrieve",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () { \r",
+											"    pm.response.to.have.status(200); \r",
+											"}); \r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {\r",
+											"    console.log(response.json());\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJnYW1hbGJhZGF3eTg4IiwiaWF0IjoxNjg5NjkyMzU2LCJleHAiOjE2ODk3Nzg3NTZ9.yQiEUxEEPvO6OaVS2iN5gm9KlTRh5eLkN1mI6HJYgRD0BoKLfUsOFLtIayJHCiOEgGuGbB1AKAdQD1NvU4_fcA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/user/image/download/gamalbadawy88",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user",
+										"image",
+										"download",
+										"gamalbadawy88"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "lab files",
+					"item": [
+						{
+							"name": "upload scan result",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () { \r",
+											"    pm.response.to.have.status(200); \r",
+											"}); \r",
+											"pm.test(\"Response time is less than 400ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+											"});\r",
+											"pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {\r",
+											"    console.log(response.json());\r",
+											"});\r",
+											"pm.test(\"Successful POST request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201, 202]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZWRoYXQ4OCIsImlhdCI6MTY4OTY5MjgyOSwiZXhwIjoxNjg5Nzc5MjI5fQ.VIsEnSMrm6CklWZmXAlrQKEn7kaWSmB6mGAvWnoT6QCPULHHRcx2DEV_kyYmm_kPD-H1y23frDpKsPDLtChAXQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/Admin/Documents/MRI scan.pdf"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": [],
+											"disabled": true
+										},
+										{
+											"key": "",
+											"type": "file",
+											"src": [],
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/scanresults/gamalbadawy88/medhat88",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"scanresults",
+										"gamalbadawy88",
+										"medhat88"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "download single scan pdf",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () { \r",
+											"    pm.response.to.have.status(200); \r",
+											"}); \r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+											"});\r",
+											"pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {\r",
+											"    console.log(response.json());\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJnYW1hbGJhZGF3eTg4IiwiaWF0IjoxNjg5NjkyMzU2LCJleHAiOjE2ODk3Nzg3NTZ9.yQiEUxEEPvO6OaVS2iN5gm9KlTRh5eLkN1mI6HJYgRD0BoKLfUsOFLtIayJHCiOEgGuGbB1AKAdQD1NvU4_fcA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/scan/download/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"scan",
+										"download",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "uploadTest result",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () { \r",
+											"    pm.response.to.have.status(200); \r",
+											"}); \r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {\r",
+											"    console.log(response.json());\r",
+											"});\r",
+											"pm.test(\"Successful POST request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201, 202]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZWRoYXQ4OCIsImlhdCI6MTY4OTY5MjgyOSwiZXhwIjoxNjg5Nzc5MjI5fQ.VIsEnSMrm6CklWZmXAlrQKEn7kaWSmB6mGAvWnoT6QCPULHHRcx2DEV_kyYmm_kPD-H1y23frDpKsPDLtChAXQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/Admin/Documents/CPR 2.pdf"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/testresults/gamalbadawy88/medhat88",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"testresults",
+										"gamalbadawy88",
+										"medhat88"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "download all scan results",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () { \r",
+											"    pm.response.to.have.status(200); \r",
+											"}); \r",
+											"pm.test(\"Response time is less than 400ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+											"});\r",
+											"pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {\r",
+											"    console.log(response.json());\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJnYW1hbGJhZGF3eTg4IiwiaWF0IjoxNjg5NjkyMzU2LCJleHAiOjE2ODk3Nzg3NTZ9.yQiEUxEEPvO6OaVS2iN5gm9KlTRh5eLkN1mI6HJYgRD0BoKLfUsOFLtIayJHCiOEgGuGbB1AKAdQD1NvU4_fcA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/download/gamalbadawy88",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"download",
+										"gamalbadawy88"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "download single testId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () { \r",
+											"    pm.response.to.have.status(200); \r",
+											"}); \r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {\r",
+											"    console.log(response.json());\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJnYW1hbGJhZGF3eTg4IiwiaWF0IjoxNjg5NjkyMzU2LCJleHAiOjE2ODk3Nzg3NTZ9.yQiEUxEEPvO6OaVS2iN5gm9KlTRh5eLkN1mI6HJYgRD0BoKLfUsOFLtIayJHCiOEgGuGbB1AKAdQD1NvU4_fcA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/test/download/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"test",
+										"download",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get table of scan info",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () { \r",
+											"    pm.response.to.have.status(200); \r",
+											"}); \r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {\r",
+											"    console.log(response.json());\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJnYW1hbGJhZGF3eTg4IiwiaWF0IjoxNjg5NjkyMzU2LCJleHAiOjE2ODk3Nzg3NTZ9.yQiEUxEEPvO6OaVS2iN5gm9KlTRh5eLkN1mI6HJYgRD0BoKLfUsOFLtIayJHCiOEgGuGbB1AKAdQD1NvU4_fcA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/scan/table/gamalbadawy88",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"scan",
+										"table",
+										"gamalbadawy88"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get table of test info",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () { \r",
+											"    pm.response.to.have.status(200); \r",
+											"}); \r",
+											"pm.test(\"Response time is less than 400ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+											"});\r",
+											"pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {\r",
+											"    console.log(response.json());\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJnYW1hbGJhZGF3eTg4IiwiaWF0IjoxNjg5NjkyMzU2LCJleHAiOjE2ODk3Nzg3NTZ9.yQiEUxEEPvO6OaVS2iN5gm9KlTRh5eLkN1mI6HJYgRD0BoKLfUsOFLtIayJHCiOEgGuGbB1AKAdQD1NvU4_fcA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/test/table/gamalbadawy88",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"test",
+										"table",
+										"gamalbadawy88"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "download all testResults",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () { \r",
+											"    pm.response.to.have.status(200); \r",
+											"}); \r",
+											"pm.test(\"Response time is less than 400ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2400);\r",
+											"});\r",
+											"pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {\r",
+											"    console.log(response.json());\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJnYW1hbGJhZGF3eTg4IiwiaWF0IjoxNjg5NjkyMzU2LCJleHAiOjE2ODk3Nzg3NTZ9.yQiEUxEEPvO6OaVS2iN5gm9KlTRh5eLkN1mI6HJYgRD0BoKLfUsOFLtIayJHCiOEgGuGbB1AKAdQD1NvU4_fcA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/downloadTests/gamalbadawy88",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"downloadTests",
+										"gamalbadawy88"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Lab Required",
+			"item": [
+				{
+					"name": "tests and scan required",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 400ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+									"});\r",
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZWRoYXQ4OCIsImlhdCI6MTY4OTY5MjgyOSwiZXhwIjoxNjg5Nzc5MjI5fQ.VIsEnSMrm6CklWZmXAlrQKEn7kaWSmB6mGAvWnoT6QCPULHHRcx2DEV_kyYmm_kPD-H1y23frDpKsPDLtChAXQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lab/tech-view-test-scan/gamalbadawy88",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lab",
+								"tech-view-test-scan",
+								"gamalbadawy88"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

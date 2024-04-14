@@ -1,0 +1,291 @@
+{
+	"info": {
+		"_postman_id": "528f6c7a-ad1b-4758-bf4d-ba292624f379",
+		"name": "authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28553152",
+		"_collection_link": "https://blue-escape-237708.postman.co/workspace/tests~ad11eefa-fb96-4138-bf63-0880b3fbe867/collection/28553152-528f6c7a-ad1b-4758-bf4d-ba292624f379?action=share&source=collection_link&creator=28553152"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"username\":\"gamalbadawy88\",\r\n\r\n     \"password\":\"111\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sign up as patient",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\":\"amira\",\r\n\r\n    \"middleName\":\"Amr\",\r\n\r\n    \"lastName\": \"hamed\",\r\n\r\n    \"username\":\"gamalbadawy88\",\r\n\r\n     \"password\":\"111\",\r\n\r\n    \"email\":\"ayaelsayed1221@gmail.com\",\r\n\r\n    \"phoneNumber\": \"01061143544\",\r\n    \r\n    \"dateOfBirth\": \"2000-12-18\",\r\n\r\n    \"authorityName\": \"ROLE_PATIENT\",\r\n\r\n    \"relationName\" : \"Ahmed\",\r\n\r\n    \"relativeType\": \"brother\",\r\n\r\n    \"relativeEmail\": \"ahmed@gmail.com\",\r\n\r\n    \"relativePhone\": \"01457855555\",\r\n\r\n    \"city\": \"Giza\",\r\n\r\n    \"street\": \"Faisl\",\r\n\r\n    \"apartmentNo\": \"9\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/auth/patient-signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"patient-signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "lab tech sign up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\":\"medhat\",\r\n\r\n    \"middleName\":\"salam\",\r\n\r\n    \"lastName\": \"mahmoud\",\r\n\r\n    \"username\":\"medhat88\",\r\n\r\n     \"password\":\"salam77K((\",\r\n\r\n    \"email\":\"mariam@gmail.com\",\r\n\r\n    \"phoneNumber\": \"0115468978\",\r\n\r\n    \"dateOfBirth\": \"1980-09-18\",\r\n\r\n    \"authorityName\": \"ROLE_LAB_TECHNICAL\",\r\n\r\n    \"labName\": \"ALpha scan\",\r\n\r\n    \"city\": \"Beni_suief\",\r\n\r\n    \"street\": \"19\",\r\n\r\n    \"apartmentNo\": \"18\",\r\n    \r\n    \"workPlaceInfos\":\r\n    [\r\n        {\r\n            \"placeName\":\"Alpha scan\",\r\n\r\n            \"cityOfTheWork\": \"mokattam\",\r\n\r\n            \"streetOfTheWork\": \"9th street\",\r\n\r\n            \"workBlockNo\": \"2650\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/auth/lab-tec-signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"lab-tec-signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sign-up specialist doctor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\":\"mira\",\r\n\r\n    \"middleName\":\"Mohammed\",\r\n\r\n    \"lastName\": \"Ali\",\r\n\r\n    \"username\":\"ahmedeid14\",\r\n\r\n     \"password\":\"111\",\r\n\r\n    \"email\":\"mira@gmail.com\",\r\n\r\n    \"phoneNumber\": \"195487945\",\r\n\r\n    \"dateOfBirth\": \"1999-11-18\",\r\n\r\n    \"authorityName\": \"ROLE_DIAGNOSTIC_DOCTOR\",\r\n   \r\n   \"specialization\": \"General\",\r\n\r\n    \"experience\": \"استشاري\",\r\n\r\n    \"city\": \"Giza\",\r\n\r\n    \"street\": \"Faisl\",\r\n\r\n    \"apartmentNo\": \"9\",\r\n    \r\n    \"workPlaceInfos\":\r\n    [\r\n        {\r\n            \"placeName\":\"AlHaram Hospital\",\r\n\r\n            \"cityOfTheWork\": \"Giza\",\r\n\r\n            \"streetOfTheWork\": \"Alharam street\",\r\n\r\n            \"workBlockNo\": \"4\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/auth/specialist-doctor-signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"specialist-doctor-signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sign up pharmacist",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\":\"amira\",\r\n\r\n    \"middleName\":\"bahaa\",\r\n\r\n    \"lastName\": \"abdelmoniem\",\r\n\r\n    \"username\":\"amira27\",\r\n\r\n     \"password\":\"111\",\r\n\r\n    \"email\":\"mariam@gmail.com\",\r\n\r\n    \"phoneNumber\": \"195487945\",\r\n    \r\n    \"dateOfBirth\": \"1999-11-18\",\r\n\r\n    \"authorityName\": \"ROLE_PHARMACIST\",\r\n\r\n    \"city\": \"Giza\",\r\n\r\n    \"street\": \"Faisl\",\r\n\r\n    \"apartmentNo\": \"9\",\r\n    \"workPlaceInfos\":\r\n    [\r\n        {\r\n            \"placeName\":\"AlHaram Hospital\",\r\n\r\n            \"cityOfTheWork\": \"Giza\",\r\n\r\n            \"streetOfTheWork\": \"Alharam street\",\r\n\r\n            \"workBlockNo\": \"4\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/auth/pharmacist-signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"pharmacist-signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin sign up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\":\"Omar\",\r\n\r\n    \"middleName\":\"Mohammed\",\r\n\r\n    \"lastName\": \"Abdelrazek\",\r\n\r\n    \"username\":\"omarmohammed1313\",\r\n\r\n     \"password\":\"111\",\r\n\r\n    \"email\":\"mariam@gmail.com\",\r\n\r\n    \"phoneNumber\": \"195487945\",\r\n    \r\n    \"dateOfBirth\": \"1999-11-18\",\r\n\r\n    \"authorityName\": \"ROLE_ADMIN\",\r\n\r\n    \"city\": \"Giza\",\r\n\r\n    \"street\": \"Faisl\",\r\n\r\n    \"apartmentNo\": \"9\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/admin-signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"admin-signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login patient",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"gamalbadawy88\",\r\n\r\n     \"password\":\"111#ozark\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login pharmacist",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\r\n    \"username\":\"amira27\",\r\n\r\n     \"password\":\"111#ozark\"\r\n     } ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login as doctor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n   { \"username\":\"amirabahaa27\",\r\n\r\n     \"password\":\"ozarLk8273*&\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
